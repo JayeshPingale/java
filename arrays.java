@@ -10,6 +10,7 @@ public class arrays {
         li.add(17);
         li.add(7);
         li.add(33);
+   
         System.out.println(li);
         //get elements 
 
