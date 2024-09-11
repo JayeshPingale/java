@@ -7,12 +7,14 @@ public class fibonaci {
             Scanner t = new Scanner(System.in);
             System.out.println("Enter the number of terms :");
             int  n= t.nextInt();
-            for (int i = 0;i<n;i++){
+            for (int i =2;i<=n;i++){
                 c = a+b;
-                System.out.print(c+" ");
+                // System.out.print(c+" ");
                 a=b;
              
                 b=c;
+                System.out.print(b);
+
             }
             
         }
