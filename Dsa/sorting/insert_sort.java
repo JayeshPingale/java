@@ -1,4 +1,6 @@
-package Dsa;
+package sorting;
+
+
 
 import java.util.Scanner;
 
