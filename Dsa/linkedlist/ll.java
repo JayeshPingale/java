@@ -48,7 +48,7 @@ public class ll {
     private static void print (node head){
         node temp = head;
         while(temp!=null){
-            System.out.print(temp.data+" ");
+            System.out.print(temp.data+" <=> ");
             temp =temp.next;
         }
         System.out.println();
@@ -109,8 +109,8 @@ private static node insertTail(node head , int val){
     while (temp.next!=null){
         temp=temp.next;
       }
-        node newNode = new node(val);
-        temp.next= newNode;
+      node newNode = new node(val);
+        temp.next=newNode;
       return head;
 }
 private static node insertAtIndex(node head , int el,int k ){
@@ -164,7 +164,7 @@ private static node insertBeforeValue(node head , int el,int val ){
     //  head = deleteAtIndex(head, 0);
     
     //  head = deleteEl(head, 8);
-    head = insertBeforeValue(head, 69,4); 
+    // head = insertAtIndex(head, 69,4); 
     
     print(head);
     }
