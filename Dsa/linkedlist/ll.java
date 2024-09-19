@@ -1,15 +1,15 @@
 package linkedlist;
-class node{
+class Node{
     int data;
-    node next;
-    node head;
+    Node next;
+    Node head;
 
-    node(int data1,node next1){
+    Node(int data1,Node next1){
         this.data=data1;
         this.next=next1;
     }
 
-    node(int data1){
+    Node(int data1){
         this.data=data1;
         this.next=null;
     }
@@ -19,25 +19,25 @@ class node{
 
 public class ll {
 
-    private static node convertarr2LL(int []arr){
-        node head = new node(arr[0]);
-        node mover =head;
+    private static Node convertarr2LL(int []arr){
+        Node head = new Node(arr[0]);
+        Node mover =head;
         for(int i =1 ; i<arr.length;i++){
-            node temp = new node(arr[i]);
+            Node temp = new Node(arr[i]);
             mover.next=temp;
             mover = temp;
         }
         return head;
 
     }
-    private static node deleteStart(node head ){
+    private static Node deleteStart(Node head ){
         if (head== null) return head;
         head = head.next;
         return head ;
     }
-    private static node deleteLast(node head ){
+    private static Node deleteLast(Node head ){
         if (head == null || head.next == null) return head;
-        node temp = head; 
+        Node temp = head; 
         while (temp.next.next != null) {
             temp=temp.next;
         }
@@ -45,8 +45,8 @@ public class ll {
         return head ;
     }
 
-    private static void print (node head){
-        node temp = head;
+    private static void print (Node head){
+        Node temp = head;
         while(temp!=null){
             System.out.print(temp.data+" <=> ");
             temp =temp.next;
@@ -54,15 +54,15 @@ public class ll {
         System.out.println();
     }
  
-    private static node deleteAtIndex(node head , int x){
+    private static Node deleteAtIndex(Node head , int x){
         if (head == null) return head;
         if (x == 0) {
             head = head.next;
             return head;
         }
 
-        node temp = head;
-        node prev= null;
+        Node temp = head;
+        Node prev= null;
         int c =0;
         while (temp!=null){
             c++;
@@ -77,15 +77,15 @@ public class ll {
 
     }
 
-    private static node deleteEl(node head , int el){
+    private static Node deleteEl(Node head , int el){
         if (head == null) return head;
         if (head.data == el) {
             head = head.next;
             return head;
         }
 
-        node temp = head;
-        node prev= null;
+        Node temp = head;
+        Node prev= null;
   
         while (temp!=null){
       
@@ -99,36 +99,36 @@ public class ll {
         return head;
 
     }
-private static node insertHead(node head , int val ){
-    node newNode = new node(val, head);
+private static Node insertHead(Node head , int val ){
+    Node newNode = new Node(val, head);
     return newNode;
 }
-private static node insertTail(node head , int val){
-    if(head ==null) new node(val); 
-    node temp = head;
+private static Node insertTail(Node head , int val){
+    if(head ==null) new Node(val); 
+    Node temp = head;
     while (temp.next!=null){
         temp=temp.next;
       }
-      node newNode = new node(val);
+      Node newNode = new Node(val);
         temp.next=newNode;
       return head;
 }
-private static node insertAtIndex(node head , int el,int k ){
+private static Node insertAtIndex(Node head , int el,int k ){
     if(head == null){
         if(k==1){
-            return new node(el);
+            return new Node(el);
         }
         else {
             return head;
         }
     }
-    if(k==1) return new node(el);
-    node temp = head;
+    if(k==1) return new Node(el);
+    Node temp = head;
     int count = 0;
     while(temp != null){
         count++;
         if(count == k-1){
-            node x= new node(el,temp.next);
+            Node x= new Node(el,temp.next);
             temp.next=x;
             break;
         }
@@ -137,14 +137,14 @@ private static node insertAtIndex(node head , int el,int k ){
 
 }
 
-private static node insertBeforeValue(node head , int el,int val ){
+private static Node insertBeforeValue(Node head , int el,int val ){
     if(head == null)return null;
-    if(head.data==val) return new node(el,head);
+    if(head.data==val) return new Node(el,head);
 
-    node temp = head;
+    Node temp = head;
     while(temp.next != null){
         if(temp.next.data==val){
-            node x= new node(el,temp.next);
+            Node x= new Node(el,temp.next);
             temp.next=x;
             break;
         }
@@ -152,10 +152,24 @@ private static node insertBeforeValue(node head , int el,int val ){
     }return head;
 
 }
+
+public static Node findMiddle(Node head)
+    {
+        // Write your code here.
+        Node slow = head;
+        Node fast = head;
+        
+        while(fast !=null && fast.next!=null){
+            
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow;
+    }
 
     public static void main(String[] args) {
         int arr [] ={2,4,6,8,9,10};
-        node head = (convertarr2LL(arr));
+        Node head = (convertarr2LL(arr));
         //  head = deleteLast(head);
         //  print(head);
         // //  System.out.println(" ");
@@ -165,7 +179,7 @@ private static node insertBeforeValue(node head , int el,int val ){
     
     //  head = deleteEl(head, 8);
     // head = insertAtIndex(head, 69,4); 
-    
+    head =findMiddle(head);
     print(head);
     }
 }

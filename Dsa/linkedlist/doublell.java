@@ -157,7 +157,21 @@ private static Node deletekthNode(Node head, int x) {
             
             }
 
-
+            private static Node reverseDLL(Node head){
+                if(head==null){
+                    return head;
+                }
+                Node last = null;
+                Node current = head;
+                while(current != null){
+                    last = current.back;
+                    current.back=current.next;
+                    current.next=last;
+                    current=current.back;
+                    }
+                    return last.back;
+            
+            }
     public static void main(String[] args) {
         int arr[] = {69, 2, 3, 4, 5};
         Node head = convertArr2DLL(arr);
@@ -169,9 +183,10 @@ private static Node deletekthNode(Node head, int x) {
         // head = deletekthNode(head, 3);
         // head = insertATHead(head, 27);
         // head = insertATTail(head, 99);
-        head = insertBeforeTail(head, 88);
+        // head = insertBeforeTail(head, 88);
        
-        head = insertATkthEL(head, 101, 3);
+        // head = insertATkthEL(head, 101, 3);
+        head =reverseDLL(head);
         print(head);
 
     }
